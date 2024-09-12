@@ -2,20 +2,18 @@ import 'package:e_commerce/common/helper/navigator/app_navigator.dart';
 import 'package:e_commerce/common/widget/appbar/basic_appbar.dart';
 import 'package:e_commerce/common/widget/button/basic_app_button.dart';
 import 'package:e_commerce/presentation/auth/pages/enter_password.dart';
-import 'package:e_commerce/presentation/auth/pages/signup.dart';
+import 'package:e_commerce/presentation/auth/pages/sigin.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 8, 3, 60),
-      appBar: const BasicAppbar(
-        hideBack: true,
-      ),
+      //  backgroundColor: const Color.fromARGB(255, 8, 3, 60),
+      appBar: const BasicAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 80),
         child: Column(
@@ -25,7 +23,23 @@ class SigninPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            _firstNameField(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _lastNameField(context),
+            const SizedBox(
+              height: 20,
+            ),
             _emailField(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _passwordField(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _firstNameField(context),
             const SizedBox(
               height: 20,
             ),
@@ -43,7 +57,7 @@ class SigninPage extends StatelessWidget {
 
 Widget _signText(BuildContext context) {
   return const Text(
-    "Sign in",
+    "Create Account",
     style: TextStyle(
         fontWeight: FontWeight.bold, fontSize: 32, color: Colors.white),
   );
@@ -51,7 +65,25 @@ Widget _signText(BuildContext context) {
 
 Widget _emailField(BuildContext context) {
   return const TextField(
-    decoration: InputDecoration(hintText: "Enter Email"),
+    decoration: InputDecoration(hintText: "Email address"),
+  );
+}
+
+Widget _firstNameField(BuildContext context) {
+  return const TextField(
+    decoration: InputDecoration(hintText: "First name"),
+  );
+}
+
+Widget _lastNameField(BuildContext context) {
+  return const TextField(
+    decoration: InputDecoration(hintText: "Last name"),
+  );
+}
+
+Widget _passwordField(BuildContext context) {
+  return const TextField(
+    decoration: InputDecoration(hintText: "Password"),
   );
 }
 
@@ -69,10 +101,10 @@ Widget _createAccount(BuildContext context) {
     text: TextSpan(children: [
       const TextSpan(text: "Do you have an account ? "),
       TextSpan(
-          text: 'Create one',
+          text: 'Sign in',
           recognizer: TapGestureRecognizer()
             ..onTap = () {
-              AppNavigator.push(context, const SignUpPage());
+              AppNavigator.pushReplacement(context, const SigninPage());
             },
           style: const TextStyle(fontWeight: FontWeight.bold))
     ]),

@@ -1,4 +1,5 @@
 import 'package:e_commerce/common/widget/button/basic_app_button.dart';
+import 'package:e_commerce/presentation/auth/pages/forgot_password.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class EnterPasswordPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 8, 3, 60),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 80),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -26,7 +27,7 @@ class EnterPasswordPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            _forgotAccount(context)
+            _forgotPassword(context)
           ],
         ),
       ),
@@ -55,13 +56,20 @@ Widget _continueButton(BuildContext context) {
   );
 }
 
-Widget _forgotAccount(BuildContext context) {
+Widget _forgotPassword(BuildContext context) {
   return RichText(
     text: TextSpan(children: [
       const TextSpan(text: "Forgot Password ? "),
       TextSpan(
           text: 'Reset',
-          recognizer: TapGestureRecognizer()..onTap = () {},
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ForgotPasswordPage(),
+                  ));
+            },
           style: const TextStyle(fontWeight: FontWeight.bold))
     ]),
   );

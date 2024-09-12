@@ -2,12 +2,10 @@ import 'package:e_commerce/common/helper/navigator/app_navigator.dart';
 import 'package:e_commerce/common/widget/appbar/basic_appbar.dart';
 import 'package:e_commerce/common/widget/button/basic_app_button.dart';
 import 'package:e_commerce/presentation/auth/pages/enter_password.dart';
-import 'package:e_commerce/presentation/auth/pages/signup.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+class ForgotPasswordPage extends StatelessWidget {
+  const ForgotPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,6 @@ class SigninPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            _createAccount(context)
           ],
         ),
       ),
@@ -43,7 +40,7 @@ class SigninPage extends StatelessWidget {
 
 Widget _signText(BuildContext context) {
   return const Text(
-    "Sign in",
+    "Forgot password",
     style: TextStyle(
         fontWeight: FontWeight.bold, fontSize: 32, color: Colors.white),
   );
@@ -61,20 +58,5 @@ Widget _continueButton(BuildContext context) {
       AppNavigator.push(context, const EnterPasswordPage());
     },
     title: "Continue",
-  );
-}
-
-Widget _createAccount(BuildContext context) {
-  return RichText(
-    text: TextSpan(children: [
-      const TextSpan(text: "Do you have an account ? "),
-      TextSpan(
-          text: 'Create one',
-          recognizer: TapGestureRecognizer()
-            ..onTap = () {
-              AppNavigator.push(context, const SignUpPage());
-            },
-          style: const TextStyle(fontWeight: FontWeight.bold))
-    ]),
   );
 }
